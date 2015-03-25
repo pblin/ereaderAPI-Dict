@@ -1,0 +1,91 @@
+input {
+  padding: 0.3em;
+  border-color: #000000;
+  border-radius: 0.3em;
+  background-color: #C0C0C0;
+  font-size: 1.0em;
+}
+
+.highlight {
+  background-color: #C0C0C0;
+}
+
+.required {
+  color: black;
+}
+
+.button-pane {
+  margin-top: 1em;
+  background-color: green;
+}
+
+#def-viewer {
+  margin: 1em;
+  padding: 1em;
+  height: 35em;
+  border: solid #D5D5D5 0.1em;
+}
+#def-viewer iframe {
+  color: green;
+}
+
+#word-list {
+  background-color: #D5D5D5;
+  margin: 0;
+  padding: 0;
+}
+#word-list li {
+}
+
+#isbn-list {
+  background-color: #D5D5D5;
+  border-radius: 0.3em;
+  float: left; clear: left; margin-bottom: 10px
+}
+#isbn-list li {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-right: 0.5em;
+  float: left; clear: left; margin-bottom: 10px
+}
+
+
+#isbnMsg {
+  margin-bottom: 1em;
+  background-color: #000000;
+  padding: 0.5em;
+}
+
+#wordMsg {
+  margin-bottom: 1em;
+  background-color: #000000;
+  padding: 0.5em;
+}
+
+.action-success {
+  padding: 0.5em;
+  color: #00d21e;
+  background-color: #000000;
+  border-radius: 0.2em;
+}
+
+.action-failure {
+  padding: 0.5em;
+  color: #ff1408;
+  background-color: #000000;
+  border-radius: 0.2em;
+}
+
+.note {
+  font-size: smaller;
+}
+
+.destructive {
+  background-color: orange;
+}
+.destructive:hover {
+  background-color: red;
+}
+.destructive:active {
+  background-color: red;
+}

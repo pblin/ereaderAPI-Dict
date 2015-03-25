@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+   <script src="jquery.min.js"></script>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>LOCAL Dictionary Lookup Demo</title>
+
+   <link href="indexDBDemo.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<div style="background:#FFFFFF; font-size:0.8em; font-family:Sans-Serif; margin:0px; padding:0px; overflow:auto;">
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+
+
+
+	<table id="demo" border="0" width="100%" style="background-color:#ffffff;border-collapse:collapse;">
+		<tr>
+			<td width="25%"  style="text-align:left">
+    			<h1> IndexedDB Demo </h1>
+			</td>
+			<td width="65%">
+				<br>
+				<div id="msg">
+				</div>
+				<br>
+			</td>
+			<td style="text-align:right;">
+				<form id="delete-store-form" style="background:#FFFFFF; border-radius:0.3em; display:inline-block;margin-bottom: 0.5em;padding: 1em;">
+					<input type="button" id="clear-store-button" value="Clear Everything!" class="destructive" />
+				</form>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<table id="manageIsbns" border="2" width="100%" style="background-color:#ffffff;border-collapse:collapse;">
+		<tr>
+		  <td colspan="2" style="text-align:center;background-color:#66FF66">
+				<H2>ISBN's</H2>
+		  </td>
+		</tr>
+
+		<tr>
+		  <td colspan="2" align="center">
+
+		   <table width="100%" border="1">
+		   <tr>
+			<form id="list-isbns-form" style="background:#FFFFFF; border-radius:0.3em; display:inline-block;margin-bottom: 0.5em;padding: 1em;">
+			   <td width="20%" style="text-align:center;vertical-align:middle">
+				   <BR><input type="button" id="list-isbn-button" value="List All ISBN's"/><BR><BR>
+			   </td>
+			   <td style="text-align:left;vertical-align:middle">
+				   <div id="isbnlist-msg">
+				   </div>
+			   </td>
+			</form>
+		   </tr>
+		   <tr>
+			<form id="add-isbn-form" style="background:#FFFFFF; border-radius:0.3em; display:inline-block;margin-bottom: 0.5em;padding: 1em;">
+			   <td width="20%" style="text-align:center;vertical-align:middle">
+			   		<BR>
+					<input type="button" id="add-isbn-button" value="Add ISBN All Words" /><BR>
+					<input type="button" id="add-isbn-button-new" value="Add ISBN New Words" /><BR>
+					<input type="button" id="add-isbn-button-new-only" value="Add ISBN New Words Only" /><BR>
+					<input type="button" id="delete-isbn-button" value="Delete ISBN" /><BR><BR>
+			   </td>
+			   <td >
+				  <table>
+					<tbody>
+					  <tr>
+						<td style="text-align:right">
+						  <label for="isbnId" class="required" style="font-size: 1.0em;font-weight: bold;">
+							ISBN:
+						  </label>
+						</td>
+						<td style="text-align:left">
+						  <input type="text" id="isbnId" name="isbnId"/>
+						</td>
+					  </tr>
+					  <tr>
+						<td style="text-align:right">
+						  <label for="version" class="required" style="font-size: 1.0em;font-weight: bold;">
+							&nbsp;&nbsp;&nbsp;Version:
+						  </label>
+						</td>
+						<td style="text-align:left">
+							<select id="version" name="version" class="highlight">
+							<option value="OD"> Older </option>
+							<option value="YD"> Young </option>
+							</select><br>
+						</td>
+					  </tr>
+				    </tbody>
+				  </table>
+			   </td>
+			</form>
+		   </tr>
+		   </table>
+
+		  </td>
+		</tr>
+
+		<tr>
+		<td width="40%">
+		   <H4>ISBNS:</H4>
+			<div>
+			  <ul id="isbn-list">
+				  <li>isbn list
+			  </ul>
+			</div>
+
+		</td>
+		<td>
+		   <H4>IN PROGRESS:</H4>
+			<div>
+			  <ul id="todo-list">
+				  <li>todo list
+			  </ul>
+			</div>
+		</td>
+		</tr>
+	</table>
+
+	<br>
+
+	<table id="selfManageWords" border="2" width="100%" style="background-color:#ffffff;border-collapse:collapse;">
+		<tr>
+		  <td style="text-align:center;background-color:#66FF66">
+				<H2>Dictionary</H2>
+		  </td>
+		</tr>
+		<tr>
+		  <td align="center">
+		   <table width="100%" border="1">
+		   <tr>
+			<form id="list-words-form" style="background:#FFFFFF; border-radius:0.3em; display:inline-block;margin-bottom: 0.5em;padding: 1em;">
+			   <td width="20%" style="text-align:center;vertical-align:middle">
+				   <BR>
+				   <input type="button" id="word-forms-button" value="Get All Wordforms"/><BR><BR>
+				   <input type="button" id="list-word-button" value="List All Words"/><BR><BR>
+   			       <input type="button" id="miss-def-button" value="Get Missing Definitions"/><BR><BR>
+			   </td>
+			   <td style="text-align:left;vertical-align:middle">
+				   <div id="wordlist-msg">
+				   </div>
+			   </td>
+			</form>
+		   </tr>
+		   <tr>
+			<form id="add-word-form" style="background:#FFFFFF; border-radius:0.3em; display:inline-block;margin-bottom: 0.5em;padding: 1em;">
+			   <td width="20%" style="text-align:center;vertical-align:middle">
+					<input type="button" id="add-word-button" value="Add/Update Word" /><BR><BR>
+					<input type="button" id="delete-word-button" value="Delete Word" /><BR><BR>
+			   </td>
+			   <td>
+				  <table>
+					<tbody>
+					  <tr>
+						<td style="text-align:right">
+						  <label for="dictId" class="required"style="font-size: 1.0em;font-weight: bold;">
+							Id:
+						  </label>
+						</td>
+						<td style="text-align:left">
+						  <input type="text" id="dictId" name="dictId"/>
+						</td>
+					  </tr>
+					  <tr>
+						<td style="text-align:right">
+						  <label for="yo" class="required" style="font-size: 1.0em;font-weight: bold;">
+							Version:
+						  </label>
+						</td>
+						<td style="text-align:left">
+							<select id="yo" name="yo" class="highlight">
+							<option value="OD"> Older </option>
+							<option value="YD"> Young </option>
+							</select><br>
+						</td>
+					  </tr>
+					  <tr>
+						<td style="text-align:right">
+						  <label for="word" class="required" style="font-size: 1.0em;font-weight: bold;">
+							Word:
+						  </label>
+						</td>
+						<td style="text-align:left">
+						  <input type="text" id="word" name="word" />
+						</td>
+					  </tr>
+					  <tr>
+						<td style="text-align:right">
+						  <label for="definition" class="required" style="font-size: 1.0em;font-weight: bold;">
+							<b>Definition:</b>
+						  </label>
+						</td>
+						<td style="text-align:left">
+						  <textarea id="definition" name="definition" rows="4" cols="70" class="highlight"></textarea>
+						</td>
+					  </tr>
+				    </tbody>
+				  </table>
+			   </td>
+			</form>
+		   </tr>
+				<!--
+		    <tr>
+		      <td colspan="2" style="text-align:left" >
+		        <div id="def-heading">
+		        	<H4>DEFINITION:</H4>
+		        </div>
+		        <div id="def-viewer">
+		        </div>
+		      </td>
+	        </tr>
+		        -->
+	        <tr>
+		      <td colspan="2">
+		         <H4>WORDS:</H4>
+		      	<div id="word-list">
+		      	</div>
+		      </td>
+	        </tr>
+
+		   </table>
+		  </td>
+		</tr>
+
+	</table>
+
+	<br>
+
+	<table id="wordListDef" border="2" width="100%" style="background-color:#ffffff;border-collapse:collapse;">
+
+
+	</table>
+
+
+    <div class="note">
+      <br><br>
+      <p>
+        Should work with with:
+      </p>
+      <div id="compat">
+      </div>
+    </div>
+
+	<script type="text/javascript" src="indexDBDemo.js"></script>
+</div>
+</body>
+</html>
